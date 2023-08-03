@@ -39,7 +39,7 @@ public class AuthorControllerTest {
     @Test
     public void shouldAddAnAuthorOnPostRequest() throws Exception {
         Author author = new Author();
-        author.setId(1);
+        author.setAuthorId(1);
         author.setFirstName("Terry");
         author.setLastName("Pratchett");
         author.setStreet("Discworld Ave");
@@ -62,7 +62,7 @@ public class AuthorControllerTest {
     @Test
     public void shouldReturnAllAuthorsOnGetRequest() throws Exception {
         Author author = new Author();
-        author.setId(1);
+        author.setAuthorId(1);
         author.setFirstName("Terry");
         author.setLastName("Pratchett");
         author.setStreet("Discworld Ave");
@@ -81,7 +81,7 @@ public class AuthorControllerTest {
     @Test
     public void shouldReturnAnAuthorById() throws Exception{
         Author author = new Author();
-        author.setId(1);
+        author.setAuthorId(1);
         author.setFirstName("Terry");
         author.setLastName("Pratchett");
         author.setStreet("Discworld Ave");
@@ -101,7 +101,7 @@ public class AuthorControllerTest {
     public void shouldUpdateAnAuthorRecord() throws Exception{
         // Arrange - Create and set up author for update
         Author author = new Author();
-        author.setId(1);
+        author.setAuthorId(1);
         author.setFirstName("Terry");
         author.setLastName("Pratchett");
         author.setStreet("Discworld Ave");
@@ -110,7 +110,7 @@ public class AuthorControllerTest {
         author.setPostalCode("94501");
         author.setPhone("555-444-3333");
         author.setEmail("TP@DiscoworldEmporium.net");
-        author.setId(1);
+        author.setAuthorId(1);
 
         repo.save(author); // save to repo
 
@@ -131,7 +131,7 @@ public class AuthorControllerTest {
     public void shouldDeleteAnAuthorById() throws Exception{
         // Create and save an author for deletion in next step
         Author author = new Author();
-        author.setId(1);
+        author.setAuthorId(1);
         author.setFirstName("Terry");
         author.setLastName("Pratchett");
         author.setStreet("Discworld Ave");

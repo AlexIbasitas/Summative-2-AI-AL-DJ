@@ -14,29 +14,39 @@ import java.util.Objects;
 @Table(name="author")
 public class Author implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "author_id")
+    private Integer authorId;
+    @Column(name = "first_name")
     private String firstName;
-
+    @Column(name = "last_name")
     private String lastName;
     private String street;
     private String city;
     private String state;
+    @Column(name = "postal_code")
     private String postalCode;
     private String phone;
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch= FetchType.EAGER)
     @JoinColumn(name="author_id")
-   // private List<Book> books;
+    private List<Book> books;
 
-    public Integer getId() {
-        return id;
+    public List<Book> getBooks() {
+        return books;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public Integer getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
     }
 
     public String getFirstName() {
@@ -109,18 +119,18 @@ public class Author implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return Objects.equals(id, author.id) && Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName) && Objects.equals(street, author.street) && Objects.equals(city, author.city) && Objects.equals(state, author.state) && Objects.equals(postalCode, author.postalCode) && Objects.equals(phone, author.phone) && Objects.equals(email, author.email);
+        return Objects.equals(authorId, author.authorId) && Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName) && Objects.equals(street, author.street) && Objects.equals(city, author.city) && Objects.equals(state, author.state) && Objects.equals(postalCode, author.postalCode) && Objects.equals(phone, author.phone) && Objects.equals(email, author.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, street, city, state, postalCode, phone, email);
+        return Objects.hash(authorId, firstName, lastName, street, city, state, postalCode, phone, email);
     }
 
     @Override
     public String toString() {
         return "Author{" +
-                "id=" + id +
+                "id=" + authorId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", street='" + street + '\'' +
@@ -135,8 +145,8 @@ public class Author implements Serializable {
     public Author() {
     }
 
-    public Author(Integer id, String firstName, String lastName, String street, String city, String state, String postalCode, String phone, String email) {
-        this.id = id;
+    public Author(Integer authorId, String firstName, String lastName, String street, String city, String state, String postalCode, String phone, String email) {
+        this.authorId = authorId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
