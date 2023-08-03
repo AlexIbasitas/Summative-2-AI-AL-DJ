@@ -35,7 +35,7 @@ class PublisherRepositoryTest {
 
         publisherRepo.save(publisher);
 
-        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getPublisher_id());
+        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
 
         assertEquals(publisher1.get(),publisher);
     }
@@ -53,7 +53,7 @@ class PublisherRepositoryTest {
 
         publisherRepo.save(publisher);
 
-        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getPublisher_id());
+        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
 
         assertTrue(publisher1.isPresent());
     }
@@ -109,7 +109,7 @@ class PublisherRepositoryTest {
 
         publisherRepo.save(publisher);
 
-        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getPublisher_id());
+        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
 
         assertEquals(publisher1.get(),publisher);
 
@@ -129,9 +129,9 @@ class PublisherRepositoryTest {
 
         publisherRepo.save(publisher);
 
-        publisherRepo.deleteById(publisher.getPublisher_id());
+        publisherRepo.deleteById(publisher.getId());
 
-        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getPublisher_id());
+        Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
 
         assertFalse(publisher1.isPresent());
     }

@@ -53,7 +53,7 @@ class PublisherControllerTest {
     public void shouldGetPublisherById() throws Exception {
         // ACT
         Publisher publisher = new Publisher();
-        publisher.setPublisher_id(1);
+        publisher.setId(1);
         publisher.setCity("Brooklyn");
         publisher.setEmail("stacy@netflix.com");
         publisher.setName("Stacy Lin");
@@ -74,7 +74,7 @@ class PublisherControllerTest {
     public void shouldGetAllPublishers() throws Exception {
         // ACT
         Publisher publisher = new Publisher();
-        publisher.setPublisher_id(1);
+        publisher.setId(1);
         publisher.setCity("Brooklyn");
         publisher.setEmail("stacy@netflix.com");
         publisher.setName("Stacy Lin");
@@ -86,7 +86,7 @@ class PublisherControllerTest {
         publisherRepository.save(publisher);
 
         Publisher publisher1 = new Publisher();
-        publisher1.setPublisher_id(2);
+        publisher1.setId(2);
         publisher1.setCity("Brooklyn");
         publisher1.setEmail("stacy@netflix.com");
         publisher1.setName("Stacy Bob");
@@ -107,7 +107,7 @@ class PublisherControllerTest {
     public void shouldUpdatePublisher() throws Exception {
         // ACT
         Publisher publisher = new Publisher();
-        publisher.setPublisher_id(1);
+        publisher.setId(1);
         publisher.setCity("Brooklyn");
         publisher.setEmail("stacy@netflix.com");
         publisher.setName("Stacy Mark");
@@ -132,7 +132,7 @@ class PublisherControllerTest {
     public void shouldDeletePublisher() throws Exception {
 
         Publisher publisher = new Publisher();
-        publisher.setPublisher_id(1);
+        publisher.setId(1);
         publisher.setCity("Brooklyn");
         publisher.setEmail("stacy@netflix.com");
         publisher.setName("Stacy Lina");

@@ -12,8 +12,9 @@ import java.util.Objects;
 public class Publisher implements Serializable {
 
     @Id
+    @Column(name="publisher_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int publisher_id;
+    private int id;
 
     private String name;
 
@@ -36,8 +37,8 @@ public class Publisher implements Serializable {
     public Publisher() {
     }
 
-    public Publisher(int publisher_id, String name, String street, String city, String state, String postal_code, String phone, String email) {
-        this.publisher_id = publisher_id;
+    public Publisher(int id, String name, String street, String city, String state, String postal_code, String phone, String email) {
+        this.id = id;
         this.name = name;
         this.street = street;
         this.city = city;
@@ -47,12 +48,12 @@ public class Publisher implements Serializable {
         this.email = email;
     }
 
-    public int getPublisher_id() {
-        return publisher_id;
+    public int getId() {
+        return id;
     }
 
-    public void setPublisher_id(int publisher_id) {
-        this.publisher_id = publisher_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -116,18 +117,18 @@ public class Publisher implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Publisher publisher = (Publisher) o;
-        return getPublisher_id() == publisher.getPublisher_id() && Objects.equals(getName(), publisher.getName()) && Objects.equals(getStreet(), publisher.getStreet()) && Objects.equals(getCity(), publisher.getCity()) && Objects.equals(getState(), publisher.getState()) && Objects.equals(getPostal_code(), publisher.getPostal_code()) && Objects.equals(getPhone(), publisher.getPhone()) && Objects.equals(getEmail(), publisher.getEmail());
+        return getId() == publisher.getId() && Objects.equals(getName(), publisher.getName()) && Objects.equals(getStreet(), publisher.getStreet()) && Objects.equals(getCity(), publisher.getCity()) && Objects.equals(getState(), publisher.getState()) && Objects.equals(getPostal_code(), publisher.getPostal_code()) && Objects.equals(getPhone(), publisher.getPhone()) && Objects.equals(getEmail(), publisher.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPublisher_id(), getName(), getStreet(), getCity(), getState(), getPostal_code(), getPhone(), getEmail());
+        return Objects.hash(getId(), getName(), getStreet(), getCity(), getState(), getPostal_code(), getPhone(), getEmail());
     }
 
     @Override
     public String toString() {
         return "Publisher{" +
-                "publisher_id=" + publisher_id +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
