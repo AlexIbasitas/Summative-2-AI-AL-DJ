@@ -18,6 +18,7 @@ public class Book implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String isbn;
+    @Column(name = "publish_date")
     private LocalDate publishDate;
     @Column(name = "author_id")
     private int authorId;

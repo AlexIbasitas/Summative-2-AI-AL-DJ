@@ -39,7 +39,7 @@ public class AuthorRepositoryTest {
         author = repo.save(author);
 
         // Act
-        Optional<Author> auth = repo.findById(author.getId());
+        Optional<Author> auth = repo.findById(author.getAuthorId());
 
         // Assert
         assertEquals(auth.get(), author);
@@ -92,7 +92,7 @@ public class AuthorRepositoryTest {
         author = repo.save(author);
 
         // Act - Find the author
-        Optional<Author> auth = repo.findById(author.getId());
+        Optional<Author> auth = repo.findById(author.getAuthorId());
 
         // Assert they are equal
         assertEquals(auth.get(), author);
@@ -118,7 +118,7 @@ public class AuthorRepositoryTest {
         repo.save(author);
 
         // Assert - comparison
-        Optional<Author> auth = repo.findById(author.getId());
+        Optional<Author> auth = repo.findById(author.getAuthorId());
 
         assertEquals(auth.get(), author);
     }
@@ -138,14 +138,14 @@ public class AuthorRepositoryTest {
         author = repo.save(author);
 
         // Act
-        Optional<Author> auth = repo.findById(author.getId());
+        Optional<Author> auth = repo.findById(author.getAuthorId());
 
         // Assert
         assertEquals(auth.get(), author); // check if item is found
 
-        repo.deleteById(author.getId()); // delete
+        repo.deleteById(author.getAuthorId()); // delete
 
-        auth = repo.findById(author.getId()); //  auth to author again
+        auth = repo.findById(author.getAuthorId()); //  auth to author again
 
         assertFalse(auth.isPresent()); // If the correct obj is deleted, isPresent must return false
     }
