@@ -6,8 +6,10 @@ import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import javax.persistence.*;
 //import java.awt.print.Book;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -31,13 +33,19 @@ public class Author implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch= FetchType.EAGER)
     @JoinColumn(name="author_id")
-    private List<Book> books;
+    private Set<Book> books = new HashSet<>();
+    public Author() {}
 
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
+    public Author(Integer authorId, String firstName, String lastName, String street, String city, String state, String postalCode, String phone, String email, Set<Book> books) {
+        this.authorId = authorId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+        this.phone = phone;
+        this.email = email;
         this.books = books;
     }
 
@@ -53,16 +61,16 @@ public class Author implements Serializable {
         return firstName;
     }
 
-    public void setFirstName(String first_name) {
-        this.firstName = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String last_name) {
-        this.lastName = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getStreet() {
@@ -113,24 +121,31 @@ public class Author implements Serializable {
         this.email = email;
     }
 
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books.addAll(books);
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return Objects.equals(authorId, author.authorId) && Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName) && Objects.equals(street, author.street) && Objects.equals(city, author.city) && Objects.equals(state, author.state) && Objects.equals(postalCode, author.postalCode) && Objects.equals(phone, author.phone) && Objects.equals(email, author.email);
+        return Objects.equals(authorId, author.authorId) && Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName) && Objects.equals(street, author.street) && Objects.equals(city, author.city) && Objects.equals(state, author.state) && Objects.equals(postalCode, author.postalCode) && Objects.equals(phone, author.phone) && Objects.equals(email, author.email) && Objects.equals(books, author.books);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(authorId, firstName, lastName, street, city, state, postalCode, phone, email);
+        return Objects.hash(authorId, firstName, lastName, street, city, state, postalCode, phone, email, books);
     }
 
     @Override
     public String toString() {
         return "Author{" +
-                "id=" + authorId +
+                "authorId=" + authorId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", street='" + street + '\'' +
@@ -139,21 +154,7 @@ public class Author implements Serializable {
                 ", postalCode='" + postalCode + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", books=" + books +
                 '}';
-    }
-
-    public Author() {
-    }
-
-    public Author(Integer authorId, String firstName, String lastName, String street, String city, String state, String postalCode, String phone, String email) {
-        this.authorId = authorId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.postalCode = postalCode;
-        this.phone = phone;
-        this.email = email;
     }
 }

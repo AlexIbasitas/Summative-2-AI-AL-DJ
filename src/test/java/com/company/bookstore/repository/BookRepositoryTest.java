@@ -14,9 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -49,7 +47,7 @@ public class BookRepositoryTest {
         author.setPostalCode("12345");
         author.setPhone("310-949-6901");
         author.setEmail("TheaDeLaCruz@gmail.com");
-        List<Book> bookList = new ArrayList<>();
+        Set<Book> bookList = new HashSet<>();
         author.setBooks(bookList);
 
         authorRepo.save(author);
@@ -91,7 +89,7 @@ public class BookRepositoryTest {
         author.setPostalCode("12345");
         author.setPhone("310-949-6901");
         author.setEmail("TheaDeLaCruz@gmail.com");
-        List<Book> bookList = new ArrayList<>();
+        Set<Book> bookList = new HashSet<>();
         author.setBooks(bookList);
 
         authorRepo.save(author);
@@ -131,8 +129,9 @@ public class BookRepositoryTest {
         author.setPostalCode("12345");
         author.setPhone("310-949-6901");
         author.setEmail("TheaDeLaCruz@gmail.com");
-        List<Book> bookList = new ArrayList<>();
+        Set<Book> bookList = new HashSet<>();
         author.setBooks(bookList);
+
 
         authorRepo.save(author);
 
@@ -167,8 +166,8 @@ public class BookRepositoryTest {
         author2.setPostalCode("12395");
         author2.setPhone("310-940-6901");
         author2.setEmail("Alex@gmail.com");
-        List<Book> bookList2 = new ArrayList<>();
-        author2.setBooks(bookList);
+        Set<Book> bookList2 = new HashSet<>();
+        author.setBooks(bookList2);
 
         authorRepo.save(author2);
 
@@ -208,7 +207,7 @@ public class BookRepositoryTest {
         author.setPostalCode("12345");
         author.setPhone("310-949-6901");
         author.setEmail("TheaDeLaCruz@gmail.com");
-        List<Book> bookList = new ArrayList<>();
+        Set<Book> bookList = new HashSet<>();
         author.setBooks(bookList);
 
         authorRepo.save(author);
@@ -251,7 +250,7 @@ public class BookRepositoryTest {
         author.setPostalCode("12345");
         author.setPhone("310-949-6901");
         author.setEmail("TheaDeLaCruz@gmail.com");
-        List<Book> bookList = new ArrayList<>();
+        Set<Book> bookList = new HashSet<>();
         author.setBooks(bookList);
 
         authorRepo.save(author);
@@ -292,7 +291,7 @@ public class BookRepositoryTest {
         author.setPostalCode("12345");
         author.setPhone("310-949-6901");
         author.setEmail("TheaDeLaCruz@gmail.com");
-        List<Book> bookList = new ArrayList<>();
+        Set<Book> bookList = new HashSet<>();
         author.setBooks(bookList);
 
         authorRepo.save(author);
