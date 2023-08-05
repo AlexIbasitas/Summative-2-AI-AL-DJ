@@ -12,7 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -33,9 +32,10 @@ public class AuthorControllerTest {
     AuthorRepository repo;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         repo.deleteAll();
     }
+
     @Test
     public void shouldAddAnAuthorOnPostRequest() throws Exception {
         Author author = new Author();
@@ -52,9 +52,9 @@ public class AuthorControllerTest {
         String inputJson = mapper.writeValueAsString(author);
 
         mockMvc.perform(post("/authors")
-                .content(inputJson)
-                .contentType(MediaType.APPLICATION_JSON)
-        )
+                        .content(inputJson)
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
                 .andDo(print())
                 .andExpect(status().isCreated());
     }
@@ -79,7 +79,7 @@ public class AuthorControllerTest {
     }
 
     @Test
-    public void shouldReturnAnAuthorById() throws Exception{
+    public void shouldReturnAnAuthorById() throws Exception {
         Author author = new Author();
         author.setAuthorId(1);
         author.setFirstName("Terry");
@@ -98,7 +98,7 @@ public class AuthorControllerTest {
     }
 
     @Test
-    public void shouldUpdateAnAuthorRecord() throws Exception{
+    public void shouldUpdateAnAuthorRecord() throws Exception {
         // Arrange - Create and set up author for update
         Author author = new Author();
         author.setAuthorId(1);
@@ -120,15 +120,15 @@ public class AuthorControllerTest {
 
         // Act - request to update the author
         mockMvc.perform(put("/authors")
-                .content(inputJson)
-                .contentType(MediaType.APPLICATION_JSON)
-        )
+                        .content(inputJson)
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
 
     @Test
-    public void shouldDeleteAnAuthorById() throws Exception{
+    public void shouldDeleteAnAuthorById() throws Exception {
         // Create and save an author for deletion in next step
         Author author = new Author();
         author.setAuthorId(1);

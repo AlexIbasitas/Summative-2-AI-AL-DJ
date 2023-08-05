@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name="book")
+@Table(name = "book")
 public class Book implements Serializable {
     @Id
     @Column(name = "book_id")
@@ -27,7 +27,8 @@ public class Book implements Serializable {
     private int publisherId;
     private BigDecimal price;
 
-    public Book() {}
+    public Book() {
+    }
 
     public Book(int id, String isbn, LocalDate publishDate, int authorId, String title, int publisherId, BigDecimal price) {
         this.id = id;

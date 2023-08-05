@@ -17,16 +17,20 @@ public class AuthorController {
     // CREATE
     @PostMapping("/authors")
     @ResponseStatus(HttpStatus.CREATED)
-    public Author addAuthorRecord(@RequestBody Author author){return repo.save(author); }
+    public Author addAuthorRecord(@RequestBody Author author) {
+        return repo.save(author);
+    }
 
 
     // READ ALL
     @GetMapping("/authors")
-    public List<Author> getAllAuthors(){return repo.findAll();}
+    public List<Author> getAllAuthors() {
+        return repo.findAll();
+    }
 
     // READ By ID
     @GetMapping("/authors/{id}")
-    public Optional<Author> getAuthorById(@PathVariable int id){
+    public Optional<Author> getAuthorById(@PathVariable int id) {
         return repo.findById(id);
     }
 
@@ -34,12 +38,14 @@ public class AuthorController {
     // UPDATE AUTHORS
     @PutMapping("/authors")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateAuthorRecord(@RequestBody Author author){repo.save(author);}
+    public void updateAuthorRecord(@RequestBody Author author) {
+        repo.save(author);
+    }
 
     // DELETE AUTHORS
     @DeleteMapping("/authors/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAuthorById(@PathVariable int id){
+    public void deleteAuthorById(@PathVariable int id) {
         repo.deleteById(id);
     }
 }

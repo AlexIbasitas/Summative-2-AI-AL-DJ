@@ -3,18 +3,17 @@ package com.company.bookstore.repository;
 import com.company.bookstore.model.Author;
 import com.company.bookstore.model.Book;
 import com.company.bookstore.model.Publisher;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -36,6 +35,7 @@ public class BookRepositoryTest {
         authorRepo.deleteAll();
         publisherRepo.deleteAll();
     }
+
     @Test
     public void testCreateBook() {
         Author author = new Author();
@@ -75,7 +75,7 @@ public class BookRepositoryTest {
 
         Optional<Book> testBook = bookRepo.findById(book.getId());
 
-        assertEquals(testBook.get(),book);
+        assertEquals(testBook.get(), book);
     }
 
     @Test
@@ -118,6 +118,7 @@ public class BookRepositoryTest {
 
         assertEquals(testBook.get(), book);
     }
+
     @Test
     public void testGetAllBooks() {
         Author author = new Author();
@@ -196,6 +197,7 @@ public class BookRepositoryTest {
         List<Book> testBookList = bookRepo.findAll();
         assertEquals(2, testBookList.size());
     }
+
     @Test
     public void testUpdateBook() {
         Author author = new Author();
@@ -239,6 +241,7 @@ public class BookRepositoryTest {
         Optional<Book> testBook = bookRepo.findById(book.getId());
         assertEquals(testBook.get(), book);
     }
+
     @Test
     public void testDeleteBook() {
         Author author = new Author();
@@ -280,6 +283,7 @@ public class BookRepositoryTest {
         Optional<Book> testBook = bookRepo.findById(book.getId());
         assertFalse(testBook.isPresent());
     }
+
     @Test
     public void testGetBooksByAuthorId() {
         Author author = new Author();
@@ -321,7 +325,6 @@ public class BookRepositoryTest {
 
         assertEquals(testBookList.get(0), book);
     }
-
 
 
 }

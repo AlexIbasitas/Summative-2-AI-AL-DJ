@@ -2,23 +2,17 @@ package com.company.bookstore.controller;
 
 import com.company.bookstore.model.Book;
 import com.company.bookstore.repository.BookRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-// import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -58,8 +52,8 @@ public class BookControllerTest {
         mockMvc.perform(post("/books")
                         .content(mapper.writeValueAsString(book))
                         .contentType(MediaType.APPLICATION_JSON))
-                        .andDo(print())
-                        .andExpect(status().isCreated());
+                .andDo(print())
+                .andExpect(status().isCreated());
     }
 
     @Test
@@ -74,8 +68,8 @@ public class BookControllerTest {
         String bookAsJson = mapper.writeValueAsString(book);
 
         mockMvc.perform(get("/books/1"))
-                        .andDo(print())
-                        .andExpect(status().isOk());
+                .andDo(print())
+                .andExpect(status().isOk());
     }
 
     @Test

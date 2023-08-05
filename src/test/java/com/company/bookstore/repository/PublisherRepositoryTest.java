@@ -18,12 +18,12 @@ class PublisherRepositoryTest {
     PublisherRepository publisherRepo;
 
     @BeforeEach
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         publisherRepo.deleteAll();
     }
 
     @Test
-    public void addPublisher(){
+    public void addPublisher() {
         Publisher publisher = new Publisher();
         publisher.setCity("Brooklyn");
         publisher.setEmail("stacy@netflix.com");
@@ -37,7 +37,7 @@ class PublisherRepositoryTest {
 
         Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
 
-        assertEquals(publisher1.get(),publisher);
+        assertEquals(publisher1.get(), publisher);
     }
 
     @Test
@@ -92,7 +92,7 @@ class PublisherRepositoryTest {
     }
 
     @Test
-    public void updatePublisher(){
+    public void updatePublisher() {
 
         Publisher publisher = new Publisher();
         publisher.setCity("Brooklyn");
@@ -111,7 +111,7 @@ class PublisherRepositoryTest {
 
         Optional<Publisher> publisher1 = publisherRepo.findById(publisher.getId());
 
-        assertEquals(publisher1.get(),publisher);
+        assertEquals(publisher1.get(), publisher);
 
     }
 

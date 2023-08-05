@@ -1,10 +1,12 @@
 package com.company.bookstore.model;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -12,7 +14,7 @@ import java.util.Objects;
 public class Publisher implements Serializable {
 
     @Id
-    @Column(name="publisher_id")
+    @Column(name = "publisher_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -30,14 +32,14 @@ public class Publisher implements Serializable {
 
     private String email;
 
-   // @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch= FetchType.EAGER)
-    //@JoinColumn(name="publisher_id")
-    //private List<Book> books;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch= FetchType.EAGER)
+    @JoinColumn(name="publisher_id")
+    private Set<Book> books = new HashSet<>();
 
     public Publisher() {
     }
 
-    public Publisher(int id, String name, String street, String city, String state, String postal_code, String phone, String email) {
+    public Publisher(int id, String name, String street, String city, String state, String postal_code, String phone, String email, Set<Book> books) {
         this.id = id;
         this.name = name;
         this.street = street;
@@ -46,6 +48,7 @@ public class Publisher implements Serializable {
         this.postal_code = postal_code;
         this.phone = phone;
         this.email = email;
+        this.books = books;
     }
 
     public int getId() {
@@ -112,17 +115,25 @@ public class Publisher implements Serializable {
         this.email = email;
     }
 
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books.addAll(books);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Publisher publisher = (Publisher) o;
-        return getId() == publisher.getId() && Objects.equals(getName(), publisher.getName()) && Objects.equals(getStreet(), publisher.getStreet()) && Objects.equals(getCity(), publisher.getCity()) && Objects.equals(getState(), publisher.getState()) && Objects.equals(getPostal_code(), publisher.getPostal_code()) && Objects.equals(getPhone(), publisher.getPhone()) && Objects.equals(getEmail(), publisher.getEmail());
+        return getId() == publisher.getId() && Objects.equals(getName(), publisher.getName()) && Objects.equals(getStreet(), publisher.getStreet()) && Objects.equals(getCity(), publisher.getCity()) && Objects.equals(getState(), publisher.getState()) && Objects.equals(getPostal_code(), publisher.getPostal_code()) && Objects.equals(getPhone(), publisher.getPhone()) && Objects.equals(getEmail(), publisher.getEmail()) && Objects.equals(getBooks(), publisher.getBooks());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getStreet(), getCity(), getState(), getPostal_code(), getPhone(), getEmail());
+        return Objects.hash(getId(), getName(), getStreet(), getCity(), getState(), getPostal_code(), getPhone(), getEmail(), getBooks());
     }
 
     @Override
@@ -136,6 +147,7 @@ public class Publisher implements Serializable {
                 ", postal_code='" + postal_code + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", books=" + books +
                 '}';
     }
 }
