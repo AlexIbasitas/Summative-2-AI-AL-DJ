@@ -24,13 +24,12 @@ public class PublisherController {
 
     //Read (By Id)
     @GetMapping("/publishers/{id}")
-    public Publisher getPublisherById(@PathVariable int id){
+    public Publisher getPublisherById(@PathVariable int id) {
         Optional<Publisher> returnValue = repo.findById(id);
 
-        if(returnValue.isPresent()){
+        if (returnValue.isPresent()) {
             return returnValue.get();
-        }
-        else{
+        } else {
             return null;
         }
     }
@@ -45,14 +44,14 @@ public class PublisherController {
     //In Insomnia, the publisher_id you want to change needs to be sent in request body
     @PutMapping("/publishers")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updatePublisher(@RequestBody Publisher publisher){
+    public void updatePublisher(@RequestBody Publisher publisher) {
         repo.save(publisher);
     }
 
     //Delete
     @DeleteMapping("/publishers/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletePublisher(@PathVariable int id){
+    public void deletePublisher(@PathVariable int id) {
         repo.deleteById(id);
     }
 

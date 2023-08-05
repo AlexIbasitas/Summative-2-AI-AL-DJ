@@ -9,7 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
 @SpringBootTest
@@ -18,12 +19,12 @@ public class AuthorRepositoryTest {
     AuthorRepository repo;
 
     @BeforeEach
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         repo.deleteAll();
     }
 
     @Test
-    public void shouldAddAuthor(){
+    public void shouldAddAuthor() {
         // Arrange
         Author author = new Author();
 
@@ -46,7 +47,7 @@ public class AuthorRepositoryTest {
     }
 
     @Test
-    public void shouldGetAllAuthors(){
+    public void shouldGetAllAuthors() {
         // Add first author
         Author author = new Author();
         author.setFirstName("George R.R.");
@@ -78,7 +79,7 @@ public class AuthorRepositoryTest {
     }
 
     @Test
-    public void shouldReturnAnAuthorById(){
+    public void shouldReturnAnAuthorById() {
         // Arrange
         Author author = new Author();
         author.setFirstName("George R.R.");
@@ -99,7 +100,7 @@ public class AuthorRepositoryTest {
     }
 
     @Test
-    public void shouldUpdateAuthorRecord(){
+    public void shouldUpdateAuthorRecord() {
         // Arrange - Set up Author Record
         Author author = new Author();
         author.setFirstName("George R.R.");
@@ -124,7 +125,7 @@ public class AuthorRepositoryTest {
     }
 
     @Test
-    public void shouldDeleteAuthorFromRecord(){
+    public void shouldDeleteAuthorFromRecord() {
         // Arrange - set up the Author record
         Author author = new Author();
         author.setFirstName("George R.R.");

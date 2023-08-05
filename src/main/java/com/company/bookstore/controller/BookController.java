@@ -17,16 +17,16 @@ public class BookController {
 
     @PostMapping("/books")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createBook(@RequestBody Book book){
+    public void createBook(@RequestBody Book book) {
         repo.save(book);
     }
 
     @GetMapping("/books/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Book getBookById(@PathVariable int id){
+    public Book getBookById(@PathVariable int id) {
         Optional<Book> book = repo.findById(id);
 
-        if (book.isPresent()){
+        if (book.isPresent()) {
             return book.get();
         } else {
             return null;
@@ -34,7 +34,7 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public List<Book> getAllBooks(){
+    public List<Book> getAllBooks() {
         return repo.findAll();
     }
 
